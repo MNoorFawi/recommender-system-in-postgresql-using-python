@@ -1,4 +1,4 @@
-Recommender in Postgres
+Recommender in PostgreSQL Using Python
 ================
 
 ## Building a recommendation engine in postgreSQL using python
