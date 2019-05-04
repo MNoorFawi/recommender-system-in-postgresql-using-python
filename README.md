@@ -100,8 +100,24 @@ compressed_movie[0:5]
 # 4     Alan Kahn    557056        0  2097216         0   00000   00000   00000
 ```
 
-Now, we have our compressed movie data, let’s write it to the databse. I
-prefer to use **sqlalchemy** for this as it is straightforward.
+Now, we have our compressed movie data, let's compare its size with the original one to see how much space we saved.
+
+``` python
+from sys import getsizeof
+print("original movie_data is {} bytes".format(getsizeof(movie_data)))
+# original movie_data is 497666 bytes
+
+print("compressed movie_data is {} bytes".format(getsizeof(compressed_movie)))
+# compressed movie_data is 58370 bytes
+
+print("space saving from original to compressed = {}%".format(
+    round((1 - (getsizeof(compressed_movie) / getsizeof(movie_data))) * 100), 2))
+# space saving from original to compressed = 88%
+```
+
+Great! we saved up to 88% of space meaning that we compressed the data 88% without losing information.
+
+Let’s now write our compressed data to the databse. I prefer to use **sqlalchemy** for this as it is straightforward.
 
 ``` python
 from sqlalchemy import create_engine
