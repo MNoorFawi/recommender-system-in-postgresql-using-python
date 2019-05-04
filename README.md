@@ -116,6 +116,7 @@ print("space saving from original to compressed = {}%".format(
 ```
 
 Great! we saved up to 88% of space meaning that we compressed the data 88% without losing information.
+**We now can calculate distances much faster!!!**
 
 Let’s now write our compressed data to the databse. I prefer to use **sqlalchemy** for this as it is straightforward.
 
