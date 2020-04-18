@@ -24,7 +24,7 @@ compressed_movie["bit4"] = unbinarize(movie_data, 76, 101)
 compressed_movie[0:5]
 
 def hash_fun(df, list_of_columns):
- return df.iloc[:, list_of_columns].apply(lambda x: "".join(x.astype(str)), axis = 1)
+    return df.iloc[:, list_of_columns].apply(lambda x: "".join(x.astype(str)), axis = 1)
 
 hash_fun(movie_data[0:4], [1, 2, 3, 4])
 
@@ -42,8 +42,8 @@ compressed_movie.to_sql("compressed_movies_rental", engine)
 
 
 def create_index(column, cursor):
- sql = "CREATE INDEX %s ON compressed_movies_rental (%s);" % (column, column)
- cursor.execute(sql)
+    sql = "CREATE INDEX %s ON compressed_movies_rental (%s);" % (column, column)
+    cursor.execute(sql)
  
 create_index("bucket1", cursor)
 create_index("bucket2", cursor)
