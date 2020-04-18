@@ -11,7 +11,7 @@ Import libraries and connect to the database
 import psycopg2
 import pandas as pd
 
-psql = psycopg2.connect(host = "localhost", database = "dvd_rental",
+psql = psycopg2.connect(host = "localhost", database = "dvdrental",
                       user = "postgres", password = "password")
 cursor = psql.cursor()
 ## fetch some data to confirm connection
@@ -77,7 +77,7 @@ some random movies we chose.
 
 ``` python
 def hash_fun(df, list_of_columns):
- return df.iloc[:, list_of_columns].apply(lambda x: "".join(x.astype(str)), axis = 1)
+    return df.iloc[:, list_of_columns].apply(lambda x: "".join(x.astype(str)), axis = 1)
 
 hash_fun(movie_data[0:4], [1, 2, 3, 4])
 
@@ -118,7 +118,7 @@ print("space saving from original to compressed = {}%".format(
 Great! we saved up to 88% of space meaning that we compressed the data 88% without losing information.
 **We now can calculate distances much faster!!!**
 
-Let’s now write our compressed data to the databse. I prefer to use **sqlalchemy** for this as it is straightforward.
+Let’s now write our compressed data to the database. I prefer to use **sqlalchemy** for this as it is straightforward.
 
 ``` python
 from sqlalchemy import create_engine
@@ -130,8 +130,8 @@ We then create indices on the buckets to make retrieval faster
 
 ``` python
 def create_index(column, cursor):
- sql = "CREATE INDEX %s ON compressed_movies_rental (%s);" % (column, column)
- cursor.execute(sql)
+    sql = "CREATE INDEX %s ON compressed_movies_rental (%s);" % (column, column)
+    cursor.execute(sql)
  
 create_index("bucket1", cursor)
 create_index("bucket2", cursor)
