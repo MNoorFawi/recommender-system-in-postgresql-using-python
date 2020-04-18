@@ -3,7 +3,7 @@ suppressMessages(library(DBI))
 ## connecting to the database with the credentials
 pw <- "password"
 drv <- dbDriver("PostgreSQL")
-conn <- dbConnect(drv, dbname = "dvd_rental", 
+conn <- dbConnect(drv, dbname = "dvdrental", 
                   host = "localhost", port = 5432,
                   password = pw, user = "postgres")
 
